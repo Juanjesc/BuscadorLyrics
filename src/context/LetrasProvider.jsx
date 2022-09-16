@@ -9,9 +9,7 @@ const LetrasProvider = ({children}) => {
     const [cargando, setCargando] = useState(false)
     const busquedaLetra = (busqueda) => {
   
-            
         setCargando(true)
-
         try {
             const options = {
               method: 'GET',
@@ -26,14 +24,15 @@ const LetrasProvider = ({children}) => {
               setLetra(response.data.lyrics)
               setAlerta('')
               console.log(response.data.lyrics);
+              setCargando(false)
             })
             
         } catch (error) {
             setAlerta('Canción no encontrada')
             setLetra('')
             console.error(error);  
+            setCargando(false)
         } 
-        setCargando(false)
         
         //
         
